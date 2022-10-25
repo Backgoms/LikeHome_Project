@@ -290,7 +290,9 @@
    
     <div class="container-fluid">
     
-    <jsp:include page="../common/header.jsp"></jsp:include>	
+    <jsp:include page="../common/sidebarHeader.jsp"></jsp:include>	
+    <jsp:include page="../common/mainNavbar.jsp"></jsp:include>	
+
 
     
     <section class="row px-0">

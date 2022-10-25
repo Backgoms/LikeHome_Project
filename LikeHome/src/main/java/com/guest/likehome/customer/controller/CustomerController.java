@@ -342,7 +342,7 @@ public class CustomerController {
 	}
 	
 	//마이페이지-쇼핑-주문내역
-	@RequestMapping("customerShoppingStatePage")
+	@RequestMapping("myOrderListPage")
 	public String customerShoppingStatePage(
 			HttpSession session, 
 			Model model,
@@ -354,7 +354,7 @@ public class CustomerController {
 		model.addAttribute("dataList", orderService.getOrderList(customerNo, deliveryStatus));
 		model.addAttribute("deliveryStatus", deliveryStatus);
 		
-		return "customer/customerShoppingStatePage";
+		return "customer/myOrderListPage";
 	}
 		
 	//마이페이지-나의쇼핑-상품스크랩북 페이지

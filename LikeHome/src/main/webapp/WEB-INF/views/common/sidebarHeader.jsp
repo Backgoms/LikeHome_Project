@@ -2,8 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 
-
- <style type="text/css">
+<style type="text/css">
  /*네비바*/
  
   @import
@@ -12,6 +11,7 @@
    
     header {
     font-family: pretendard;
+    color:#404040;
    }
    
    ::-webkit-scrollbar {
@@ -37,14 +37,30 @@
      margin-left:20px;
      flex: 0 0 auto;
    }
+   
+   .a{
+   	margin-bottom:0.5rem;
+   }
 
-/*네비바*/
  </style>
  
-<!-- 네비바 -->
+ <script type="text/javascript">
+ window.addEventListener("onscroll", function (e){
+	   
+	   if (e.deltaY > 0 ){
+	      document.getElementById("navbar").style.visibility = "hidden";
+	   } else {
+	      document.getElementById("navbar").style.visibility = "visible";
+	   }
+	});
+ 
+ 
+</script>
+
 <header>
-<nav id="navbar" class="navbar row px-0 navbar-light bg-white sticky-top">
-  <div class="row container-fluid m-0 pb-1  border-bottom">
+
+<nav id="navbar" class="navbar row px-0 pb-0 navbar-light bg-white sticky-top">
+  <div class="row container-fluid m-0 pb-1 border-bottom">
     <div class="col-2 p-0">
     <button class="navbar-toggler p-0 ms-0 border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar"
           style="box-shadow: 0 0 white; border: 0;">
@@ -65,7 +81,7 @@
     </div>
     </div>
     
-  <!-- 오프캔버스 좌측 -->
+  <!-- 오프캔버스 좌측: 사이드바-->
     <div class="offcanvas offcanvas-start" style="width: 65%" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
       <div class="offcanvas-header">
         <h5 class="offcanvas-title" id="offcanvasNavbarLabel" style="color:#ff6500;">LIKEHOME</h5>
@@ -83,7 +99,7 @@
                 </c:when>
                 <c:otherwise>
                    <img style="width: 100%; height: 100%" class="rounded-circle"
-                      src="../resources/img/163944985057083845.webp">
+                      src="../resources/img/none.gif">
                 </c:otherwise>
              </c:choose>
             </div>
@@ -124,11 +140,11 @@
           <div class="row">
             <div class="col mt-2">
               <p class="menu" onclick="location.href='../customer/customerProfileMyHomePage'">마이페이지</p>
-               <p class="menu" onclick="location.href='../customer/customerShoppingStatePage'">나의 쇼핑</p>
+               <p class="menu" onclick="location.href='../customer/myOrderListPage'">나의 쇼핑</p>
                <p class="menu" onclick="location.href='../order/cartPage'">장바구니</p>
               <p class="menu" onclick="location.href='../post/postRegisterPage'">사진 올리기</p>
               <p class="menu" onclick="location.href='../customer/customerCouponListPage'"> 쿠폰</p>
-              <p class="menu" onclick="location.href='#'">고객센터</p>
+              <p class="menu" onclick="location.href='../customer/customerShoppingHelpPage'">고객센터</p>
               <p class="menu" onclick="location.href='../main/helpQnaBoardPage'">문의하기</p>
             </div>
           </div>
@@ -150,30 +166,23 @@
       </div>
       </c:when>
       </c:choose>
-      
-      <!-- 기능 이식 후 삭제 해주세요-->
-      <!-- <button onclick="location.href='../customer/customerLoginPage'" type="button" class="btn btn-primary" >일반회원로그인</button>
-        <button onclick="location.href='../vendor/vendorLoginPage'" type="button" class="btn btn-primary" >사업자로그인</button> -->
-        <!-- <button onclick="location.href='../admin/adminLoginPage'" type="button" class="btn btn-primary" >관리자로그인</button> -->
-        <!-- 기능 이식 후 삭제 해주세요-->
-        
       </div>
     </div>
   </div>
-  <!-- 오프캔버스 좌측 -->
+  <!-- 오프캔버스 좌측 끝 -->
 
- 
-  <!-- 오프캔버스 우측 -->
+  <!-- 오프캔버스 우측 : 검색창 -->
   <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
     <div class="offcanvas-header">
-      <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="통합 검색">
+      <input type="text" class="form-control" style="border: 1px solid #ff6500;" id="exampleFormControlInput1" placeholder="통합 검색">
       <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">
+      검색내용
+     
     </div>
   </div>
-  <!-- 오프캔버스 우측 -->
+  <!-- 오프캔버스 우측 끝-->
 
 </nav>
 </header>
-<!-- 네비바 -->

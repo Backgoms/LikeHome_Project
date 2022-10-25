@@ -102,7 +102,7 @@
 <body>
 <div class="container-fluid">
 	
-    <jsp:include page="../common/header2.jsp"></jsp:include>	
+    <jsp:include page="../common/sidebarHeader.jsp"></jsp:include>	
 
 	<div class="row my-3">
 		<div class="col-3"><img class="rounded img-fluid" src="../resources/img/06b846a3-20b7-4f87-b615-18b5a5882fd1_1660203841645.jpg"></div>

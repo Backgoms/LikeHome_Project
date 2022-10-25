@@ -117,7 +117,9 @@
 
 <body>
    <div class="container-fluid">
-      <jsp:include page="../common/header.jsp"></jsp:include>
+	<jsp:include page="/WEB-INF/views/common/sidebarHeader.jsp"/>
+	<jsp:include page="/WEB-INF/views/common/mainNavbar.jsp"/>
+	
       <div class="row">
          <div class="col px-0">
             <img class="img-fluid"

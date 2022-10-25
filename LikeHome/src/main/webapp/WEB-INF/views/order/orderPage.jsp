@@ -795,7 +795,7 @@
 				
 <div class="container-fluid">
 
-	<jsp:include page="../common/header2.jsp"></jsp:include>	
+	<jsp:include page="../common/sidebarHeader.jsp"></jsp:include>	
 	
 
      <form id="orderForm" name="orderForm" enctype="multipart/form-data" action="./orderProcess" method="post">

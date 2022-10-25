@@ -403,10 +403,10 @@
 
 <div class="container-fluid">
 
-       <jsp:include page="../common/header2.jsp"></jsp:include>
+       <jsp:include page="../common/sidebarHeader.jsp"></jsp:include>
 
 
-	<div class="row bg-white mb-2 sticky-top"><!--모두선택-->
+	<div class="row bg-white mb-1 py-1 sticky-top"><!--모두선택-->
 		<div class="col-1">
 			<input class="form-check-input fs-5 my-1" type="checkbox" name="checkAll" onclick="checkAll(this)">
 		</div>

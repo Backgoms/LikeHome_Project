@@ -274,7 +274,9 @@
   
     <div class="container-fluid">
     
-     <jsp:include page="../common/header.jsp"></jsp:include>
+     <jsp:include page="../common/sidebarHeader.jsp"></jsp:include>	
+     <jsp:include page="../common/mainNavbar.jsp"></jsp:include>	
+
      		
      <div class="row bg-white">
        <div id="catDescription" class="col extra-info pt-0 pb-2">

@@ -79,8 +79,8 @@
 	  <div class="col pe-0" style="color: #828C94;">
 	        상호명 : (주)LIKEHOME<br>
 	        이메일 : (고객문의) cs@likehome.net<br>
-	        사업자등록번호 :119-86-91245<br>
-	        통신판매업신고번호 :제2018-서울서초-0580호 <span style="font-weight: bold;">사업자정보확인</span><br>
+	        사업자등록번호 : 119-86-91245<br>
+	        통신판매업신고번호 : 제2018-서울서초-0580호 <span style="font-weight: bold;">사업자정보확인</span><br>
 	        주소 : 서울 강남구 테헤란로7길 7 에스코빌딩 7층
 	   </div>
 	</div>

@@ -308,7 +308,8 @@ window.addEventListener("DOMContentLoaded", function (){
 <body>
 <div class="container-fluid">
 	
-    <jsp:include page="../common/header.jsp"></jsp:include>	
+    <jsp:include page="../common/sidebarHeader.jsp"></jsp:include>	
+    <jsp:include page="../common/mainNavbar.jsp"></jsp:include>	
 
 	<div class="row">
 		<div class="col d-grid">
