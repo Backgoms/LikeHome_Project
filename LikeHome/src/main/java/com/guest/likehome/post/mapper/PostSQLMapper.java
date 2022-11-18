@@ -42,9 +42,9 @@ public interface PostSQLMapper {
 	
 	//포스트리스트 불러오기
 	public ArrayList<PostVo> selectPostAll(
-			@Param("house_type_no") int house_type_no,
-			@Param("house_style_no") int house_style_no,
-			@Param("space_type_no") int space_type_no,
+			@Param("house_type_no") String house_type_no,
+			@Param("house_style_no") String house_style_no,
+			@Param("space_type_no") String space_type_no,
 			@Param("orderby") String orderby
 			);
 

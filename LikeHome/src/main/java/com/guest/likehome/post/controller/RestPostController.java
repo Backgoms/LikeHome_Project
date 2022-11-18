@@ -264,9 +264,9 @@ public class RestPostController {
 	
 	@RequestMapping("restPostListPage")
 	public HashMap<String, Object> postListPage(Model model, HttpSession session,
-			String house_type_no, 
-			String house_style_no, 
-			String space_type_no, 
+			String house_type_name, 
+			String house_style_name, 
+			String space_type_name, 
 			String orderby) {
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		int customer_no = 0;
@@ -274,8 +274,12 @@ public class RestPostController {
 		if(customerInfo != null) {
 			customer_no = customerInfo.getCustomer_no();
 		}
+		System.out.println(house_type_name);
+		System.out.println(house_style_name);
+		System.out.println(space_type_name);
+		System.out.println(orderby);
 		
-		ArrayList<HashMap<String, Object>> data = postService.getPostList(house_type_no, house_style_no, space_type_no, orderby, customer_no);
+		ArrayList<HashMap<String, Object>> data = postService.getPostList(house_type_name, house_style_name, space_type_name, orderby, customer_no);
 				
 		map.put("data", data);
 		map.put("result", "seccess");

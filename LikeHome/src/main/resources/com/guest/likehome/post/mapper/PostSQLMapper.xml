@@ -57,7 +57,7 @@
 		AND lhs.HOUSE_STYLE_NO = lp.HOUSE_STYLE_NO
 		AND lst.SPACE_TYPE_NO = ls.SPACE_TYPE_NO 	
 		<choose>
-			<when test="house_type_no != 0 and house_style_no == 0 and space_type_no == 0">
+			<when test="house_type_name != 0 and house_style_name == 0 and space_type_name == 0">
 				AND lht.house_type_no = #{house_type_no}
 			</when>
 			<when test="house_type_no == 0 and house_style_no != 0 and space_type_no == 0">

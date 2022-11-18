@@ -54,10 +54,10 @@ body{
 <script type="text/javascript">
 
 	function refreshPostList() {
-		var house_type_no = document.getElementById("houseTypeFilter").value
-		var house_style_no = document.getElementById("styleTypeFilter").value;
-		var space_type_no = document.getElementById("spaceTypeFilter").value;
-		var orderby = document.getElementById("orderByFilter").value;
+		var house_type_name = document.getElementById("houseTypeFilter").innerText;
+		var house_style_name = document.getElementById("styleTypeFilter").innerText;
+		var space_type_name = document.getElementById("spaceTypeFilter").innerText;
+		var orderby = document.getElementById("orderByFilter").innerText;
    
 		
 		var xhr = new XMLHttpRequest(); //AJAX 객체 생성
@@ -109,16 +109,14 @@ body{
 			}
 
 		}
-		xhr.open("post", "./restPostListPage");
+		xhr.open("get", "./restPostListPage?house_type_name="+ house_type_name +
+						"&house_style_name="+house_style_name+"&space_type_name="+space_type_name+"&orderby="+orderby+"");
 		xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-		xhr.send("house_type_no=" + house_type_no + "&house_style_no="
-				+ house_style_no + "&space_type_no=" + space_type_no
-				+ "&orderby=" + orderby);
+		xhr.send();
 	};
 	
- 	function orderFilter(no,name){
+ 	function orderFilter(name){
  		var x = document.getElementById("orderByFilter")
-		x.setAttribute("value",no)
 		x.setAttribute("style","color:#ff6500")
 		x.innerText = name + " "
 		
@@ -128,9 +126,8 @@ body{
 		x.appendChild(icon);
 		refreshPostList()
  	}
-	function houseFilter(no,name){
+	function houseFilter(name){
 		var x = document.getElementById("houseTypeFilter")
-		x.setAttribute("value",no)
 		x.setAttribute("style","color:#ff6500")
 		x.innerText = name + " "
 		
@@ -140,9 +137,8 @@ body{
 		x.appendChild(icon);
 		refreshPostList()
 	}
-	function styleFilter(no,name){
+	function styleFilter(name){
 		var x = document.getElementById("styleTypeFilter")
-		x.setAttribute("value",no)
 		x.setAttribute("style","color:#ff6500")
 		x.innerText = name + " "
 		var icon = document.createElement("i");
@@ -151,9 +147,8 @@ body{
 		x.appendChild(icon);
 		refreshPostList()
 	}
-	function spaceFilter(no,name){
+	function spaceFilter(name){
 		var x = document.getElementById("spaceTypeFilter")
-		x.setAttribute("value",no)
 		x.setAttribute("style","color:#ff6500")
 		x.innerText = name + " "
 		var icon = document.createElement("i");
@@ -168,7 +163,6 @@ body{
 	
 	function orderReset(){
 		var x = document.getElementById("orderByFilter")
-		x.setAttribute("value",0)
 		x.setAttribute("style","color:#404040")
 		x.innerText = "정렬"+" "
 		var icon = document.createElement("i");
@@ -179,7 +173,6 @@ body{
 	
 	function houseReset(){
 		var x = document.getElementById("houseTypeFilter")
-		x.setAttribute("value",0)
 		x.setAttribute("style","color:#404040")
 		x.innerText = "주거타입"+" "
 		var icon = document.createElement("i");
@@ -190,10 +183,9 @@ body{
 	}
 	function styleReset(){
 		var x = document.getElementById("styleTypeFilter")
-		x.setAttribute("value",0)
 		x.setAttribute("style","color:#404040")
 		x.innerText = "스타일"+" "
-			var icon = document.createElement("i");
+		var icon = document.createElement("i");
 		icon.classList.add("bi");
 		icon.classList.add("bi-chevron-down");
 		x.appendChild(icon);
@@ -201,7 +193,6 @@ body{
 	}
 	function spaceReset(){
 		var x = document.getElementById("spaceTypeFilter")
-		x.setAttribute("value",0)
 		x.setAttribute("style","color:#404040")
 		x.innerText = "공간"+" "
 		var icon = document.createElement("i");
@@ -450,10 +441,13 @@ body{
 			<button onclick="orderReset()" type="button" class="btn" data-bs-dismiss="offcanvas" value="0" >초기화</button>
 		</div>
 		<div class="offcanvas-body small py-0">
-			<div onclick="orderFilter(1,this.innerText)"  data-bs-dismiss="offcanvas" class="my-2">최신순</div>
+			<div onclick="orderFilter(this.innerText)"  data-bs-dismiss="offcanvas" class="my-2">최신순</div>
 		</div>
 		<div class="offcanvas-body small py-0">
-			<div onclick="orderFilter(2,this.innerText)" data-bs-dismiss="offcanvas" class="my-2">인기순</div>
+			<div onclick="orderFilter(this.innerText)" data-bs-dismiss="offcanvas" class="my-2">과거순</div>
+		</div>
+		<div class="offcanvas-body small py-0">
+			<div onclick="orderFilter(this.innerText)" data-bs-dismiss="offcanvas" class="my-2">인기순</div>
 		</div>
 	</div>
 
@@ -470,7 +464,7 @@ body{
 		
 			<c:forEach items="${PostCategory.houseTypeDataList }" var="category">
 				<div class="offcanvas-body small py-0">
-				<div onclick="houseFilter(${category.house_type_no },'${category.house_type_name }')" data-bs-dismiss="offcanvas" class="my-2">
+				<div onclick="houseFilter('${category.house_type_name }')" data-bs-dismiss="offcanvas" class="my-2">
 						${category.house_type_name }
 				</div>
 				</div>
@@ -489,7 +483,7 @@ body{
 		</div>
 			<c:forEach items="${PostCategory.houseStyleDataList }" var="category">
 				<div class="offcanvas-body small py-0">
-				<div onclick="styleFilter(${category.house_style_no },'${category.house_style_name }')" data-bs-dismiss="offcanvas" class="my-2"  >
+				<div onclick="styleFilter('${category.house_style_name }')" data-bs-dismiss="offcanvas" class="my-2"  >
 					${category.house_style_name }
 				</div>
 				</div>
@@ -508,7 +502,7 @@ body{
 		</div>
 			<c:forEach items="${PostCategory.spaceTypeDataList }" var="category">
 				<div class="offcanvas-body small py-0">
-				<div  onclick="spaceFilter(${category.space_type_no },'${category.space_type_name}' )" data-bs-dismiss="offcanvas" class="my-2">
+				<div  onclick="spaceFilter('${category.space_type_name}' )" data-bs-dismiss="offcanvas" class="my-2">
 						${category.space_type_name }
 				</div>
 				</div>

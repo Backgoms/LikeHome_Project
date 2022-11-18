@@ -67,31 +67,10 @@ public class PostServiceImpl {
 	
 	//포스트리스트 데이터
 	public ArrayList<HashMap<String, Object>> getPostList(
-			String house_type_no, String house_style_no, String space_type_no, String orderby, int customer_no){
+			String house_type_name, String house_style_name, String space_type_name, String orderby, int customer_no){
 		ArrayList<HashMap<String, Object>> PostDataList = new ArrayList<HashMap<String,Object>>();
-		int houseTypeNo =0;
-		int houseStyleNo =0;
-		int spaceTypeNo =0;
-		
-		if((house_type_no ==null) || (house_type_no.equals("0"))) {
-			houseTypeNo= 0;
-		}else {
-			houseTypeNo = Integer.parseInt(house_type_no);
-		}
-		if((house_style_no ==null) || (house_style_no.equals("0"))) {
-			houseStyleNo = 0;
-		}else {
-			houseStyleNo = Integer.parseInt(house_style_no);
-		}
-		if((space_type_no ==null) || (space_type_no.equals("0"))) {
-			spaceTypeNo=0;
-		}else {
-			spaceTypeNo = Integer.parseInt(space_type_no);
-		}
-		if(orderby ==null) {
-			orderby="null";
-		}
-		ArrayList<PostVo> PostList = postSQLMapper.selectPostAll(houseTypeNo, houseStyleNo, spaceTypeNo, orderby);
+
+		ArrayList<PostVo> PostList = postSQLMapper.selectPostAll(house_type_name, house_style_name, space_type_name, orderby);
 		for(PostVo postVo : PostList) {
 			int post_no = postVo.getPost_no(); 
 			ArrayList<SubpostVo> subPostList = postSQLMapper.selectSubPostByPostNo(post_no);
