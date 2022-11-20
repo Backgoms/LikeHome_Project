@@ -108,18 +108,25 @@ body{
 				
 			}
 
+		} 
+		if(house_type_name == "주거타입" && house_style_name == "스타일" && space_type_name == "공간" && orderby == "정렬"){
+			xhr.open("get", "./restPostListPage");
 		}
-		xhr.open("get", "./restPostListPage?house_type_name="+ house_type_name +
-						"&house_style_name="+house_style_name+"&space_type_name="+space_type_name+"&orderby="+orderby+"");
-		xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+		
+		
+// 		xhr.open("get", "./restPostListPage?house_type_name="+ house_type_name +
+// 						"&house_style_name="+house_style_name+"&space_type_name="+space_type_name+"&orderby="+orderby+"");
+		
 		xhr.send();
 	};
 	
  	function orderFilter(name){
  		var x = document.getElementById("orderByFilter")
 		x.setAttribute("style","color:#ff6500")
-		x.innerText = name + " "
-		
+		x.innerText = name
+		var span = document.createElement("span")
+		span.innerText = " ";
+		x.appendChild(span);
 		var icon = document.createElement("i");
 		icon.classList.add("bi");
 		icon.classList.add("bi-chevron-down");
@@ -129,8 +136,10 @@ body{
 	function houseFilter(name){
 		var x = document.getElementById("houseTypeFilter")
 		x.setAttribute("style","color:#ff6500")
-		x.innerText = name + " "
-		
+		x.innerText = name
+		var span = document.createElement("span")
+		span.innerText = " ";
+		x.appendChild(span);
 		var icon = document.createElement("i");
 		icon.classList.add("bi");
 		icon.classList.add("bi-chevron-down");
@@ -140,7 +149,10 @@ body{
 	function styleFilter(name){
 		var x = document.getElementById("styleTypeFilter")
 		x.setAttribute("style","color:#ff6500")
-		x.innerText = name + " "
+		x.innerText = name
+		var span = document.createElement("span")
+		span.innerText = " ";
+		x.appendChild(span);
 		var icon = document.createElement("i");
 		icon.classList.add("bi");
 		icon.classList.add("bi-chevron-down");
@@ -150,7 +162,10 @@ body{
 	function spaceFilter(name){
 		var x = document.getElementById("spaceTypeFilter")
 		x.setAttribute("style","color:#ff6500")
-		x.innerText = name + " "
+		x.innerText = name
+		var span = document.createElement("span")
+		span.innerText = " ";
+		x.appendChild(span);
 		var icon = document.createElement("i");
 		icon.classList.add("bi");
 		icon.classList.add("bi-chevron-down");
@@ -164,7 +179,10 @@ body{
 	function orderReset(){
 		var x = document.getElementById("orderByFilter")
 		x.setAttribute("style","color:#404040")
-		x.innerText = "정렬"+" "
+		x.innerText = "정렬"
+		var span = document.createElement("span")
+		span.innerText = " ";
+		x.appendChild(span);
 		var icon = document.createElement("i");
 		icon.classList.add("bi");
 		icon.classList.add("bi-chevron-down");
@@ -174,7 +192,10 @@ body{
 	function houseReset(){
 		var x = document.getElementById("houseTypeFilter")
 		x.setAttribute("style","color:#404040")
-		x.innerText = "주거타입"+" "
+		x.innerText = "주거타입"
+		var span = document.createElement("span")
+		span.innerText = " ";
+		x.appendChild(span);
 		var icon = document.createElement("i");
 		icon.classList.add("bi");
 		icon.classList.add("bi-chevron-down");
@@ -184,7 +205,10 @@ body{
 	function styleReset(){
 		var x = document.getElementById("styleTypeFilter")
 		x.setAttribute("style","color:#404040")
-		x.innerText = "스타일"+" "
+		x.innerText = "스타일"
+		var span = document.createElement("span")
+		span.innerText = " ";
+		x.appendChild(span);
 		var icon = document.createElement("i");
 		icon.classList.add("bi");
 		icon.classList.add("bi-chevron-down");
@@ -194,7 +218,10 @@ body{
 	function spaceReset(){
 		var x = document.getElementById("spaceTypeFilter")
 		x.setAttribute("style","color:#404040")
-		x.innerText = "공간"+" "
+		x.innerText = "공간"
+		var span = document.createElement("span")
+		span.innerText = " ";
+		x.appendChild(span);
 		var icon = document.createElement("i");
 		icon.classList.add("bi");
 		icon.classList.add("bi-chevron-down");
@@ -360,32 +387,32 @@ body{
     	<i class="bi bi-funnel-fill"> </i>
     </div>
     <div class="px-0 me-4"  style="width: auto ;color: #404040; flex: 0 0 auto;">
-    	<button id="orderByFilter" value="0" class="p-0 btn border-0" type="button"
+    	<button  class="p-0 btn border-0" type="button"
 				data-bs-toggle="offcanvas" data-bs-target="#orderBy"
-				aria-controls="offcanvasBottom" style="width: 100%;" >정렬
+				aria-controls="offcanvasBottom" style="width: 100%;" ><span id="orderByFilter">정렬</span>
 				<span><i class="bi bi-chevron-down"></i></span>
 				</button>
     </div>
     <div class="px-0 me-4" style="width: auto;color: #404040; flex: 0 0 auto;">
-    <button id="houseTypeFilter" value="0" class="p-0 btn border-0" type="button"
+    <button  class="p-0 btn border-0" type="button"
 				data-bs-toggle="offcanvas" data-bs-target="#houseType"
-				aria-controls="offcanvasBottom" style="width: 100%"><span>주거타입</span>
+				aria-controls="offcanvasBottom" style="width: 100%"><span id="houseTypeFilter">주거타입</span>
 				<span><i class="bi bi-chevron-down"></i></span>
 				</button>
     </div>
     <div class="px-0 me-4" style="width:auto;color: #404040; flex: 0 0 auto;">
-    <button id="styleTypeFilter" value="0" class="p-0 btn border-0" type="button"
+    <button  class="p-0 btn border-0" type="button"
 				data-bs-toggle="offcanvas" data-bs-target="#StyleType"
 				aria-controls="offcanvasBottom" style="width: 100%">
-				<span>스타일</span>
+				<span id="styleTypeFilter">스타일</span>
 				<span><i class="bi bi-chevron-down"></i></span></button>
     	
     </div>
     <div class="px-0 me-4" style="width:auto;color: #404040;flex: 0 0 auto;">
-    <button id="spaceTypeFilter" value="0" class="p-0 btn border-0" type="button"
+    <button  class="p-0 btn border-0" type="button"
 				data-bs-toggle="offcanvas" data-bs-target="#spaceType"
 				aria-controls="offcanvasBottom" style="width: 100%">
-				<span>공간</span>
+				<span id="spaceTypeFilter">공간</span>
 				<span><i class="bi bi-chevron-down"></i></span>
 				</button>
     </div>

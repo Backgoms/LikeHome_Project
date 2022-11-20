@@ -33,18 +33,20 @@ public interface PostSQLMapper {
 	
 	//하우스스타일 불러오기
 	public ArrayList<HouseStyleVo> selectHouseStyleAll();
-	
+	public Integer selectHouseStyleNoByHouseStyleName(String house_style_name);
 	//하우스타입 불러오기
 	public ArrayList<HouseTypeVo> selectHouseTypeAll();
+	public Integer selectHouseTypeNoByHouseTypeName(String house_type_name);
 	
 	//공간타입불러오기
 	public ArrayList<SpaceTypeVo> selectSpaceTypeAll();
+	public Integer selectSpaceTypeBySpaceTypeName(String space_type_name);
 	
 	//포스트리스트 불러오기
 	public ArrayList<PostVo> selectPostAll(
-			@Param("house_type_no") String house_type_no,
-			@Param("house_style_no") String house_style_no,
-			@Param("space_type_no") String space_type_no,
+			@Param("house_type_no") int house_type_no,
+			@Param("house_style_no") int house_style_no,
+			@Param("space_type_no") int space_type_no,
 			@Param("orderby") String orderby
 			);
 

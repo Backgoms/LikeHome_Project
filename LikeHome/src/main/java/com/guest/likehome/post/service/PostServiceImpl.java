@@ -69,8 +69,23 @@ public class PostServiceImpl {
 	public ArrayList<HashMap<String, Object>> getPostList(
 			String house_type_name, String house_style_name, String space_type_name, String orderby, int customer_no){
 		ArrayList<HashMap<String, Object>> PostDataList = new ArrayList<HashMap<String,Object>>();
+		int house_type_no = 0;
+		int house_style_no = 0;
+		int space_type_no = 0;
+		
+		if(house_type_name != null) {
+			house_type_no = postSQLMapper.selectHouseTypeNoByHouseTypeName(house_type_name);
+		}
+		
+		if(house_style_name != null) {
+			house_style_no = postSQLMapper.selectHouseStyleNoByHouseStyleName(house_style_name);
+		}
+		
+		if(space_type_name != null) {
+			space_type_no = postSQLMapper.selectSpaceTypeBySpaceTypeName(space_type_name);
+		}
 
-		ArrayList<PostVo> PostList = postSQLMapper.selectPostAll(house_type_name, house_style_name, space_type_name, orderby);
+		ArrayList<PostVo> PostList = postSQLMapper.selectPostAll(house_type_no, house_style_no, space_type_no, orderby);
 		for(PostVo postVo : PostList) {
 			int post_no = postVo.getPost_no(); 
 			ArrayList<SubpostVo> subPostList = postSQLMapper.selectSubPostByPostNo(post_no);

@@ -45,6 +45,7 @@ public class PostController {
 		if(customerInfo != null) {
 			customer_no = customerInfo.getCustomer_no();
 		}
+
 		HashMap<String, Object> PostCategory = postService.getPostCategory();
 		ArrayList<HashMap<String, Object>> data = postService.getPostList(house_type_name, house_style_name, space_type_name, orderby, customer_no);
 				

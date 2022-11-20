@@ -40,14 +40,31 @@
 	<select id="selectHouseStyleAll" resultType="com.guest.likehome.vo.HouseStyleVo">
 		SELECT * FROM LH_HOUSE_STYLE
 	</select>
+	<select id="selectHouseStyleNoByHouseStyleName" resultType="int">
+		SELECT * FROM LH_HOUSE_STYLE WHERE HOUSE_STYLE_NAME = #{house_style_name}
+	
+	</select>
+
+
 
 	<select id="selectHouseTypeAll" resultType="com.guest.likehome.vo.HouseTypeVo">
 		SELECT * FROM LH_HOUSE_TYPE
 	</select>
+	<select id="selectHouseTypeNoByHouseTypeName" resultType="int">
+		SELECT * FROM LH_HOUSE_TYPE WHERE HOUSE_TYPE_NAME = #{house_type_name}
+	</select>
+
+
 
 	<select id="selectSpaceTypeAll" resultType="com.guest.likehome.vo.SpaceTypeVo">
 		SELECT * FROM LH_SPACE_TYPE
 	</select>
+	<select id="selectSpaceTypeBySpaceTypeName" resultType="int">
+		SELECT * FROM LH_SPACE_TYPE WHERE SPACE_TYPE_NAME = #{space_type_name}
+	</select>
+
+
+
 
 	<select id="selectPostAll" resultType="com.guest.likehome.vo.PostVo">
 		SELECT DISTINCT  lp.* 
@@ -57,7 +74,7 @@
 		AND lhs.HOUSE_STYLE_NO = lp.HOUSE_STYLE_NO
 		AND lst.SPACE_TYPE_NO = ls.SPACE_TYPE_NO 	
 		<choose>
-			<when test="house_type_name != 0 and house_style_name == 0 and space_type_name == 0">
+			<when test="house_type_no != 0 and house_style_no == 0 and space_type_no == 0">
 				AND lht.house_type_no = #{house_type_no}
 			</when>
 			<when test="house_type_no == 0 and house_style_no != 0 and space_type_no == 0">
@@ -87,13 +104,13 @@
 		</choose>
 		
 		<choose>
-			<when test="orderby.equals('null')">
+			<when test='orderby == null'>
 				ORDER BY lp.POST_NO DESC
 			</when>
-			<when test="orderby.equals('최신순')">
+			<when test='orderby.equals("최신순")'>
 				ORDER BY lp.POST_NO DESC
 			</when>
-			<when test="orderby.equals('과거순')">
+			<when test='orderby.equals("과거순")'>
 				ORDER BY lp.POST_NO ASC
 			</when>
 			<otherwise>
